@@ -28,11 +28,8 @@ const deleteFav = async (req , res) =>{
 const UpdateFav = async (req, res)=> {
     const {c_id} = req.params;
     const {instructions, photo, name } = req.body;
-    FlowerMongo.findByIdAndUpdate({ _id:c_id}, {
-        instructions: instructions,
-        photo: photo,
-        name: name,
-    }, {new:true}, (err, data)=> {
+    FlowerMongo.findByIdAndUpdate({ _id:c_id}, 
+        {instructions, photo, name}, {new:true}, (err, data)=> {
         res.send(data)
     })
 }
